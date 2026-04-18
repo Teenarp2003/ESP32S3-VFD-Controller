@@ -1,0 +1,3 @@
+[console_scripts]
+vfd = ble_terminal:main
+
