@@ -1,6 +1,6 @@
 # ESP32S3-VFD-Controller
 
-An ESP32-powered clock using a 20x2 character PT6314 Vacuum Fluorescent Display( M0220MD-202MDAR1-3 ), controlled over BLE. WiFi runs in the background for NTP time sync and OTA firmware updates.
+An ESP32-powered clock using a 20x2 character [PT6314](https://newhavendisplay.com/content/app_notes/PT6314.pdf) Vacuum Fluorescent Display([ M0220MD-202MDAR1-3 ](https://newhavendisplay.com/2x20-character-vfd-module-parallel-interface-dot-matrix-with-controller/)), controlled over BLE. WiFi runs in the background for NTP time sync and OTA firmware updates.
 
 ## Features
 
