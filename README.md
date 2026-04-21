@@ -2,6 +2,23 @@
 
 An ESP32-powered clock using a 20x2 character [PT6314](https://newhavendisplay.com/content/app_notes/PT6314.pdf) Vacuum Fluorescent Display([ M0220MD-202MDAR1-3 ](https://newhavendisplay.com/2x20-character-vfd-module-parallel-interface-dot-matrix-with-controller/)), controlled over BLE. WiFi runs in the background for NTP time sync and OTA firmware updates.
 
+
+## HARDWARE
+I am using the  M0220MD-202MDAR1-3 VFD from Newhaven for the display in Serial mode to reduce the number of pins required fro the control. I am using [@so1der's Serial library](https://github.com/so1der/PT6314) for the control of the display.
+
+For the microcontroller, I am using the [ESP32S3-Zero](https://www.waveshare.com/wiki/ESP32-S3-Zero) board from Waveshare. This board is the perfect balance between small size and power. (also what I had lying around at the time) 
+
+The power for the VFD is primarily supplied by 2x 21700 Cells in 2S1P configuration, with additional hardware for BMS and charging. I am using a generic [HX-2S-D20](https://manuals.plus/m/51c02f1101d06d987f7852fb0171bbf1a26e248223928acdc679b88364eb22fb.pdf) and [TP5100](https://www.ktron.in/wp-content/uploads/2020/02/KSTM0432-TP5100-Datasheet.pdf?v=c86ee0d9d7ed) board in 2S mode with charging current set to 0.5A. 
+
+Power for charging/discharging is supplied by using a 9v USB-C PD trigger module. the output is directly attached to the TP5100 board. 
+
+The display draws around 250 mA on full brightness, thus a logic level MOSFET [IRLZ44N](https://www.infineon.com/assets/row/public/documents/24/49/infineon-irlz44n-datasheet-en.pdf?fileId=5546d462533600a40153567217c32725) is used to switch power to the display by controlling it through the ESP32S3. GPIO 10 is used for that. 
+
+With the current configuration, on full brightness, the display gives me around 2 days of battery life. ( which is not a lot, honestly. However increasing the battery size woud lead to the clock in general looking bulkier. 
+
+I would be uploading photos and schematics for the entire project soon! 
+
+
 ## Features
 
 - **Accurate timekeeping** via NTP with configurable timezone
